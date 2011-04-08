@@ -1,10 +1,10 @@
-/* jquery.html_helper > jquery.html_helper.js
+/*! 
+ * jquery.html_helper.js
  * -------------------------------
  * Description:	An HTML best-practices helper, for on-the-fly debugging of common HTML mistakes.
  * Author: 		Shaun O'Connell - shaun@tactile.co.za
  * More info: 	http://tactile.co.za
  * Requires: 	jQuery 1.3.2+
- * Build: 		1
  */
 $(document).ready(function(){
 	var helper_debug_level = 'warning'; /* valid: error|warning */
