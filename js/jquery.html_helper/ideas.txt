@@ -1,0 +1,61 @@
+Ideas:
+==============================================
+* Enable / disable Helpers by setting a class on an element.
+* As above, but if set on a certain parent element, then you're inherently setting scope - any child elements will be checked, but not upwards?
+* Allow the developer to set a level of Help.  E.g. Errors only.
+* Look at themed location of tooltips like Growl notifications. i.e. tooltips always appear in the same location.  This will help prevent tooltips from flying off the right and bottom of the page when the affected element is near the sides of the viewport.
+* HTML validation based on doctype (see below)
+* 
+
+
+
+
+Things to check for in terms of HTML well-formedness and validation:
+==============================================
+/* Correct <html> and <body> element placemnet */
+:not(html) {} /* No <html> node */
+:not(html > body) {} /* <body> element is not a child of the <html> element */
+:not(body) {} /* No <body> node */
+/* Block elements as the child node only */
+body > * {}
+html body > h1,
+html body > h2,
+html body > h3,
+html body > h4,
+html body > h5,
+html body > h6,
+html body > p,
+html body > div {}
+
+/* Bad forms */
+<form action="">
+form method?
+
+/* HTML5 */
+acronym {}
+
+/* XHTML */
+applet {}
+basefont {}
+center {}
+dir {}
+font {}
+isindex {}
+menu {}
+strike {}
+s {}
+u {}
+
+a[target] {}
+script[language] {}
+
+b {}
+i {}
+
+option[required=""] {}
+option[disabled=""] {}
+option[selected=""] {}
+input[checked=""] {}
+
+
+

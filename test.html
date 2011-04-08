@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--link rel="stylesheet" type="text/css" href="general.css"-->
+        <style type="text/css">
+            table {border-spacing:3px; border:#ccc solid 1px;}
+            tr > * {border:#ccc solid 1px; padding:3px 5px;}
+        </style>
+        <title>Test cases for Helper CSS</title>
+    </head>
+    <body>
+        <p>Test case: Empty href attribute</p>
+        <table>
+            <tr>
+                <th>href has no value</th>
+                <td><a href="">Link</a></td>
+            </tr>
+            <tr>
+                <th>href has a value</th>
+                <td><a href="http://www.google.com">Link</a></td>
+            </tr>
+        </table>
+        <p>Test case: Empty src attribute</p>
+        <table>
+            <tr>
+                <th>image as intended</th>
+                <td><img src="img/spinner.gif" width="16" height="16" alt="Test"></td>
+            </tr>
+            <tr>
+                <th>src has no value</th>
+                <td><img src="" width="16" height="16" alt="Test"></td>
+            </tr>
+            <tr>
+                <th>image has no alt</th>
+                <td><img src="spinner.gif" width="16" height="16"></td>
+            </tr>
+            <tr>
+                <th>image alt is empty</th>
+                <td><img src="spinner.gif" width="16" height="16" alt=""></td>
+            </tr>
+            <tr>
+                <th>image has no dimensions</th>
+                <td><img src="spinner.gif" alt="Test"></td>
+            </tr>
+        </table>
+        <p>Test case: Placeholder href attribute</p>
+        <table>
+            <tr>
+                <th>href has no value</th>
+                <td><a href="">Link</a></td>
+            </tr>
+            <tr>
+                <th>href has a placeholder</th>
+                <td><a href="#">Link</a></td>
+            </tr>
+            <tr>
+                <th>href uses a bookmark</th>
+                <td><a href="#test">Link</a></td>
+            </tr>
+            <tr>
+                <th>href uses a URI</th>
+                <td><a href="/">Link</a></td>
+            </tr>
+        </table>
+        <p>Test case: abbr &amp; acronyms</p>
+        <table>
+            <tr>
+                <th>abbr has no title</th>
+                <td><abbr>TEST</abbr></td>
+            </tr>
+            <tr>
+                <th>abbr has no title value</th>
+                <td><abbr title="">TEST</abbr></td>
+            </tr>
+            <tr>
+                <th>abbr has a title value</th>
+                <td><abbr title="TEST">TEST</abbr></td>
+            </tr>
+            <tr>
+                <th>acronym has no title</th>
+                <td><acronym>TEST</acronym></td>
+            </tr>
+            <tr>
+                <th>acronym has no title value</th>
+                <td><acronym title="">TEST</acronym></td>
+            </tr>
+            <tr>
+                <th>acronym has a title value</th>
+                <td><acronym title="TEST">TEST</acronym></td>
+            </tr>
+        </table>
+<!--
+    TBD:
+    Any element with an empty title attribute
+    Any element with inline style
+-->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.html_helper/jquery.html_helper.js"></script>
+    </body>
+</html>
