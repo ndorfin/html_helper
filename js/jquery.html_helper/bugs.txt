@@ -1,3 +1,0 @@
-Known bugs:
-==============================================
-* Doesn't work in Google Chrome / Safari.
