@@ -1,100 +1,217 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!--link rel="stylesheet" type="text/css" href="general.css"-->
-        <style type="text/css">
-            table {border-spacing:3px; border:#ccc solid 1px;}
-            tr > * {border:#ccc solid 1px; padding:3px 5px;}
-        </style>
-        <title>Test cases for Helper CSS</title>
-    </head>
-    <body>
-        <p>Test case: Empty href attribute</p>
-        <table>
-            <tr>
-                <th>href has no value</th>
-                <td><a href="">Link</a></td>
-            </tr>
-            <tr>
-                <th>href has a value</th>
-                <td><a href="http://www.google.com">Link</a></td>
-            </tr>
-        </table>
-        <p>Test case: Empty src attribute</p>
-        <table>
-            <tr>
-                <th>image as intended</th>
-                <td><img src="img/spinner.gif" width="16" height="16" alt="Test"></td>
-            </tr>
-            <tr>
-                <th>src has no value</th>
-                <td><img src="" width="16" height="16" alt="Test"></td>
-            </tr>
-            <tr>
-                <th>image has no alt</th>
-                <td><img src="spinner.gif" width="16" height="16"></td>
-            </tr>
-            <tr>
-                <th>image alt is empty</th>
-                <td><img src="spinner.gif" width="16" height="16" alt=""></td>
-            </tr>
-            <tr>
-                <th>image has no dimensions</th>
-                <td><img src="spinner.gif" alt="Test"></td>
-            </tr>
-        </table>
-        <p>Test case: Placeholder href attribute</p>
-        <table>
-            <tr>
-                <th>href has no value</th>
-                <td><a href="">Link</a></td>
-            </tr>
-            <tr>
-                <th>href has a placeholder</th>
-                <td><a href="#">Link</a></td>
-            </tr>
-            <tr>
-                <th>href uses a bookmark</th>
-                <td><a href="#test">Link</a></td>
-            </tr>
-            <tr>
-                <th>href uses a URI</th>
-                <td><a href="/">Link</a></td>
-            </tr>
-        </table>
-        <p>Test case: abbr &amp; acronyms</p>
-        <table>
-            <tr>
-                <th>abbr has no title</th>
-                <td><abbr>TEST</abbr></td>
-            </tr>
-            <tr>
-                <th>abbr has no title value</th>
-                <td><abbr title="">TEST</abbr></td>
-            </tr>
-            <tr>
-                <th>abbr has a title value</th>
-                <td><abbr title="TEST">TEST</abbr></td>
-            </tr>
-            <tr>
-                <th>acronym has no title</th>
-                <td><acronym>TEST</acronym></td>
-            </tr>
-            <tr>
-                <th>acronym has no title value</th>
-                <td><acronym title="">TEST</acronym></td>
-            </tr>
-            <tr>
-                <th>acronym has a title value</th>
-                <td><acronym title="TEST">TEST</acronym></td>
-            </tr>
-        </table>
-<!--
-    TBD:
-    Any element with an empty title attribute
-    Any element with inline style
--->
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.html_helper/jquery.html_helper.js"></script>
-    </body>
+	<head>
+		<style type="text/css">
+			body {font:13px/1.3 Helvetica, Arial, sans-serif; margin:0 auto; padding:0; width:960px;}
+			.test_case {margin:1em 0; width:400px;}
+				.test_case p {margin:0; background-color:#eee; padding:5px; font-weight:bold;}
+				.test_case table {border-spacing:3px; border:#eee solid 1px; width:100%;}
+					.test_case thead tr > * {text-align:left; color:#333; font-weight:normal; text-transform:uppercase; font-size:11px; padding:0 5px;}
+					.test_case tbody tr > * {border:#eee solid 1px; padding:3px 5px;}
+					.test_case tbody th {text-align:left; font-weight:normal; padding-right:20px; min-width:200px; color:#666;}
+					.test_case tbody .type {font-size:11px; width:50px;}
+					tr.valid > .type {color:green}
+					tr.invalid > .type {color:red;}
+					tr.warning > .type {color:orange;}
+		</style>
+		<title>Test cases for html_helper</title>
+	</head>
+	<body>
+		<div class="test_case">
+			<p>&lt;a&gt;</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Test case</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="invalid">
+						<td><a href="">Link</a></td>
+						<td class="type">ERROR</td>
+						<th>href has no value</th>
+					</tr>
+					<tr class="warning">
+						<td><a href="#">Link</a></td>
+						<td class="type">WARNING</td>
+						<th>href has a placeholder</th>
+					</tr>
+					<tr class="valid">
+						<td><a>Link</a></td>
+						<td class="type">PASSED</td>
+						<th>no href</th>
+					</tr>
+					<tr class="valid">
+						<td><a href="#test">Link</a></td>
+						<td class="type">PASSED</td>
+						<th>href uses a bookmark URI</th>
+					</tr>
+					<tr class="valid">
+						<td><a href="/">Link</a></td>
+						<td class="type">PASSED</td>
+						<th>href uses a URI</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="test_case">
+			<p>&lt;abbr&gt;</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Test case</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="invalid">
+						<td><abbr>No.</abbr></td>
+						<td class="type">ERROR</td>
+						<th>abbr has no title</th>
+					</tr>
+					<tr class="invalid">
+						<td><abbr title="">No.</abbr></td>
+						<td class="type">ERROR</td>
+						<th>abbr has no title value</th>
+					</tr>
+					<tr class="valid">
+						<td><abbr title="Number">No.</abbr></td>
+						<td class="type">PASSED</td>
+						<th>abbr has a title value</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="test_case">
+			<p>&lt;acronym&gt;</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Test case</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="invalid">
+						<td><acronym>TLA</acronym></td>
+						<td class="type">ERROR</td>
+						<th>acronym has no title</th>
+					</tr>
+					<tr class="invalid">
+						<td><acronym title="">TLA</acronym></td>
+						<td class="type">ERROR</td>
+						<th>acronym has no title value</th>
+					</tr>
+					<tr class="valid">
+						<td><acronym title="Three Letter Acronym">TLA</acronym></td>
+						<td class="type">PASSED</td>
+						<th>acronym has a title value</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="test_case">
+			<p>&lt;form&gt;</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Test case</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="invalid">
+						<td><form></form></td>
+						<td class="type">ERROR</td>
+						<th>form has no action</th>
+					</tr>
+					<tr class="invalid">
+						<td><form action=""></form></td>
+						<td class="type">ERROR</td>
+						<th>form action has no value</th>
+					</tr>
+					<tr class="valid">
+						<td><form action="/"></form></td>
+						<td class="type">PASSED</td>
+						<th>form action has a URI value</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="test_case">
+			<p>&lt;img&gt;</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Test case</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="invalid">
+						<td><img src="" width="16" height="16" alt="Test"></td>
+						<td class="type">ERROR</td>
+						<th>image src has no value</th>
+					</tr>
+					<tr class="invalid">
+						<td><img src="spinner.gif" width="16" height="16"></td>
+						<td class="type">ERROR</td>
+						<th>image has no alt</th>
+					</tr>
+					<tr class="warning">
+						<td><img src="spinner.gif" width="16" height="16" alt=""></td>
+						<td class="type">WARNING</td>
+						<th>image alt is empty</th>
+					</tr>
+					<tr class="warning">
+						<td><img src="spinner.gif" alt="Test"></td>
+						<td class="type">WARNING</td>
+						<th>image has no dimensions</th>
+					</tr>
+					<tr class="valid">
+						<td><img src="img/spinner.gif" width="16" height="16" alt="Test"></td>
+						<td class="type">PASSED</td>
+						<th>image as intended</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="test_case">
+			<p>&lt;label&gt;</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Test case</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="invalid">
+						<td><label>First name:</label></td>
+						<td class="type">ERROR</td>
+						<th>label has no for</th>
+					</tr>
+					<tr class="invalid">
+						<td><label for="">First name:</label></td>
+						<td class="type">ERROR</td>
+						<th>label for has no value</th>
+					</tr>
+					<tr class="valid">
+						<td><label for="txt_input">First name:</label></td>
+						<td class="type">PASSED</td>
+						<th>label for has a value</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.html_helper/jquery.html_helper.js"></script>
+	</body>
 </html>

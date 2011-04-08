@@ -31,7 +31,7 @@ $(document).ready(function(){
 			"selector": "img[width=\"\"], img:not([width])",
 			"description": "This image is missing a 'width' attribute or attribute value.  Declaring a 'width' value will ensure content doesn't shift around while the image is loading."
 		},{
-			"selector": "label:not([for]), label[for=\"\"]",
+			"selector": "label[for=\"\"], label:not([for])",
 			"description": "You've used a label (&lt;label&gt;) here without specifying a 'for' attribute or attribute value.  Ideally, a label's 'for' attribute should be associated with a form field's ID."
 		}
 	]
@@ -48,14 +48,17 @@ $(document).ready(function(){
 			"selector": "a[href=\"\"]",
 			"description": "If you use a 'href' attribute, then it must contain a URL value."
 		},{
-			"selector": "abbr:not([title]), abbr[title=\"\"]",
+			"selector": "abbr[title=\"\"], abbr:not([title])",
 			"description": "Abbreviations (&lt;abbr&gt;) should always contain a 'title'."
 		},{
-			"selector": "acronym:not([title]), acronym[title=\"\"]",
+			"selector": "acronym[title=\"\"], acronym:not([title])",
 			"description": "Acronyms (&lt;acronym&gt;) should always contain a 'title'."
 		},{
 			"selector": "img:not([alt])",
 			"description": "This image (&lt;img&gt;) is missing an 'alt' attribute or attribute value.  Specify an 'alt' attribute so that non-sighted users can understand what this image is trying to convey."
+		},{
+			"selector": "form[action=\"\"], form:not([action])",
+			"description": "This form (&lt;form&gt;) is missing an 'action' attribute or attribute value. Specify a valid URL as the 'action' attribute value so that the &t;form&gt; posts as normal."
 		}
 	]
 

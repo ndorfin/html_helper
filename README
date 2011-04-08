@@ -38,9 +38,6 @@ html body > h6,
 html body > p,
 html body > div {} /* The <body>'s direct descendants should be block elements */
 
-form:not([action]),
-form[action=""] {} /* Bad form action */
-
 /* Invalid HTML5 elements */
 acronym {}
 
@@ -64,5 +61,7 @@ option[disabled=""] {}
 option[selected=""] {}
 input[checked=""] {}
 
-
-
+/* Other things to check */
+input[type="button"] {} /* Not good for lack of JS support */
+input[type="image"] {} /* Image buttons incur a costly maintenance overhead.  Consider using CSS3 here instead. */
+ 
