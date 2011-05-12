@@ -2,7 +2,12 @@
 <html>
 	<head>
 		<style type="text/css">
-			body {font:13px/1.3 Helvetica, Arial, sans-serif; margin:0 auto; padding:0; width:960px;}
+			body {font:13px/1.3 Helvetica, Arial, sans-serif; margin:0 auto; padding:1em 0; width:960px;}
+			h1 {margin:0;}
+			#menu {position:fixed; left:0; top:0; width:300px;}
+			#elements {float:left; width:450px;}
+			#elements_presentational {width:450px; margin-left:480px;}
+			#attributes_presentational {width:450px; margin-left:480px;}
 			.test_case {margin:1em 0; width:400px;}
 				.test_case p {margin:0; background-color:#eee; padding:5px; font-weight:bold;}
 				.test_case table {border-spacing:3px; border:#eee solid 1px; width:100%;}
@@ -17,199 +22,321 @@
 		<title>Test cases for html_helper</title>
 	</head>
 	<body>
-		<div class="test_case">
-			<p>&lt;a&gt;</p>
-			<table>
-				<thead>
-					<tr>
-						<th>Test case</th>
-						<th>Type</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="invalid">
-						<td><a href="">Link</a></td>
-						<td class="type">ERROR</td>
-						<th>href has no value</th>
-					</tr>
-					<tr class="warning">
-						<td><a href="#">Link</a></td>
-						<td class="type">WARNING</td>
-						<th>href has a placeholder</th>
-					</tr>
-					<tr class="valid">
-						<td><a>Link</a></td>
-						<td class="type">PASSED</td>
-						<th>no href</th>
-					</tr>
-					<tr class="valid">
-						<td><a href="#test">Link</a></td>
-						<td class="type">PASSED</td>
-						<th>href uses a bookmark URI</th>
-					</tr>
-					<tr class="valid">
-						<td><a href="/">Link</a></td>
-						<td class="type">PASSED</td>
-						<th>href uses a URI</th>
-					</tr>
-				</tbody>
-			</table>
+		<ul id="menu">
+			<li><a href="#elements">Element test-cases</a></li>
+			<li><a href="#elements_presentational">Presentational elements</a></li>
+			<li><a href="#attributes_presentational">Presentational Attributes</a></li>
+		</ul>
+		<div id="elements">
+			<h1>Element test-cases</h1>
+			<div class="test_case">
+				<p>&lt;a&gt;</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Test example</th>
+							<th>Type</th>
+							<th>Test case</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="invalid">
+							<td><a href="">Link</a></td>
+							<td class="type">ERROR</td>
+							<th>href has no value</th>
+						</tr>
+						<tr class="warning">
+							<td><a href="#">Link</a></td>
+							<td class="type">WARNING</td>
+							<th>href has a placeholder</th>
+						</tr>
+						<tr class="warning">
+							<td><a href="http://www.google.com" target="_blank">Popup link</a></td>
+							<td class="type">WARNING</td>
+							<th>uses a target attribute</th>
+						</tr>
+						<tr class="valid">
+							<td><a>Link</a></td>
+							<td class="type">PASSED</td>
+							<th>no href</th>
+						</tr>
+						<tr class="valid">
+							<td><a href="#test">Link</a></td>
+							<td class="type">PASSED</td>
+							<th>href uses a bookmark URI</th>
+						</tr>
+						<tr class="valid">
+							<td><a href="/">Link</a></td>
+							<td class="type">PASSED</td>
+							<th>href uses a URI</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="test_case">
+				<p>&lt;abbr&gt;</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Test example</th>
+							<th>Type</th>
+							<th>Test case</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="invalid">
+							<td><abbr>No.</abbr></td>
+							<td class="type">ERROR</td>
+							<th>abbr has no title</th>
+						</tr>
+						<tr class="invalid">
+							<td><abbr title="">No.</abbr></td>
+							<td class="type">ERROR</td>
+							<th>abbr has no title value</th>
+						</tr>
+						<tr class="valid">
+							<td><abbr title="Number">No.</abbr></td>
+							<td class="type">PASSED</td>
+							<th>abbr has a title value</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="test_case">
+				<p>&lt;acronym&gt;</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Test example</th>
+							<th>Type</th>
+							<th>Test case</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="invalid">
+							<td><acronym>TLA</acronym></td>
+							<td class="type">ERROR</td>
+							<th>acronym has no title</th>
+						</tr>
+						<tr class="invalid">
+							<td><acronym title="">TLA</acronym></td>
+							<td class="type">ERROR</td>
+							<th>acronym has no title value</th>
+						</tr>
+						<tr class="valid">
+							<td><acronym title="Three Letter Acronym">TLA</acronym></td>
+							<td class="type">PASSED</td>
+							<th>acronym has a title value</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="test_case">
+				<p>&lt;form&gt;</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Test example</th>
+							<th>Type</th>
+							<th>Test case</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="invalid">
+							<td><form></form></td>
+							<td class="type">ERROR</td>
+							<th>form has no action</th>
+						</tr>
+						<tr class="invalid">
+							<td><form action=""></form></td>
+							<td class="type">ERROR</td>
+							<th>form action has no value</th>
+						</tr>
+						<tr class="valid">
+							<td><form action="/"></form></td>
+							<td class="type">PASSED</td>
+							<th>form action has a URI value</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="test_case">
+				<p>&lt;img&gt;</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Test example</th>
+							<th>Type</th>
+							<th>Test case</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="invalid">
+							<td><img src="" width="16" height="16" alt="Test"></td>
+							<td class="type">ERROR</td>
+							<th>image src has no value</th>
+						</tr>
+						<tr class="invalid">
+							<td><img width="16" height="16" alt="Test"></td>
+							<td class="type">ERROR</td>
+							<th>image has no src</th>
+						</tr>
+						<tr class="invalid">
+							<td><img src="spinner.gif" width="16" height="16"></td>
+							<td class="type">ERROR</td>
+							<th>image has no alt</th>
+						</tr>
+						<tr class="warning">
+							<td><img src="img/spinner.gif" width="16" height="16" alt=""></td>
+							<td class="type">WARNING</td>
+							<th>image alt is empty</th>
+						</tr>
+						<tr class="warning">
+							<td><img src="img/spinner.gif" alt="Test"></td>
+							<td class="type">WARNING</td>
+							<th>image has no dimensions</th>
+						</tr>
+						<tr class="valid">
+							<td><img src="img/spinner.gif" width="16" height="16" alt="Test"></td>
+							<td class="type">PASSED</td>
+							<th>image as intended</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="test_case">
+				<p>&lt;label&gt;</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Test example</th>
+							<th>Type</th>
+							<th>Test case</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="warning">
+							<td><label>First name:</label></td>
+							<td class="type">WARNING</td>
+							<th>label has no for</th>
+						</tr>
+						<tr class="warning">
+							<td><label for="">First name:</label></td>
+							<td class="type">WARNING</td>
+							<th>label for has no value</th>
+						</tr>
+						<tr class="valid">
+							<td><label for="txt_input">First name:</label></td>
+							<td class="type">PASSED</td>
+							<th>label for has a value</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<div class="test_case">
-			<p>&lt;abbr&gt;</p>
-			<table>
-				<thead>
-					<tr>
-						<th>Test case</th>
-						<th>Type</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="invalid">
-						<td><abbr>No.</abbr></td>
-						<td class="type">ERROR</td>
-						<th>abbr has no title</th>
-					</tr>
-					<tr class="invalid">
-						<td><abbr title="">No.</abbr></td>
-						<td class="type">ERROR</td>
-						<th>abbr has no title value</th>
-					</tr>
-					<tr class="valid">
-						<td><abbr title="Number">No.</abbr></td>
-						<td class="type">PASSED</td>
-						<th>abbr has a title value</th>
-					</tr>
-				</tbody>
-			</table>
+		<div id="elements_presentational">
+			<h1>Presentational elements</h1>
+			<div class="test_case">
+				<p>&lt;b&gt;, &lt;font&gt;, &lt;hr&gt;, &lt;i&gt;, etc</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Test example</th>
+							<th>Type</th>
+							<th>Test case</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="warning">
+							<td><b>Bolded</b></td>
+							<td class="type">WARNING</td>
+							<th>&lt;b&gt; elements are considered presentational</th>
+						</tr>
+						<tr class="warning">
+							<td><big>BIG TEXT</big></td>
+							<td class="type">WARNING</td>
+							<th>&lt;big&gt; elements are considered presentational</th>
+						</tr>
+						<tr class="warning">
+							<td><blink>YAY INTERNET</blink></td>
+							<td class="type">WARNING</td>
+							<th>&lt;blink&gt; elements are considered presentational</th>
+						</tr>
+						<tr class="warning">
+							<td><center>Centered</center></td>
+							<td class="type">WARNING</td>
+							<th>&lt;center&gt; elements are considered presentational</th>
+						</tr>
+						<tr class="warning">
+							<td><font>Font-style</font></td>
+							<td class="type">WARNING</td>
+							<th>&lt;font&gt; elements are considered presentational</th>
+						</tr>
+						<tr class="warning">
+							<td><hr></td>
+							<td class="type">WARNING</td>
+							<th>&lt;hr&gt; elements are considered presentational</th>
+						</tr>
+						<tr class="warning">
+							<td><i>Italicised</i></td>
+							<td class="type">WARNING</td>
+							<th>&lt;i&gt; elements are considered presentational</th>
+						</tr>
+						<tr class="warning">
+							<td><small>small text</small></td>
+							<td class="type">WARNING</td>
+							<th>&lt;small&gt; elements are considered presentational</th>
+						</tr>
+						<tr class="warning">
+							<td><u>Underlined</u></td>
+							<td class="type">WARNING</td>
+							<th>&lt;u&gt; elements are considered presentational</th>
+						</tr>
+						<tr class="warning">
+							<td><marquee>Oh lol, a marquee</marquee></td>
+							<td class="type">WARNING</td>
+							<th>&lt;marquee&gt; elements are considered presentational</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<div class="test_case">
-			<p>&lt;acronym&gt;</p>
-			<table>
-				<thead>
-					<tr>
-						<th>Test case</th>
-						<th>Type</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="invalid">
-						<td><acronym>TLA</acronym></td>
-						<td class="type">ERROR</td>
-						<th>acronym has no title</th>
-					</tr>
-					<tr class="invalid">
-						<td><acronym title="">TLA</acronym></td>
-						<td class="type">ERROR</td>
-						<th>acronym has no title value</th>
-					</tr>
-					<tr class="valid">
-						<td><acronym title="Three Letter Acronym">TLA</acronym></td>
-						<td class="type">PASSED</td>
-						<th>acronym has a title value</th>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="test_case">
-			<p>&lt;form&gt;</p>
-			<table>
-				<thead>
-					<tr>
-						<th>Test case</th>
-						<th>Type</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="invalid">
-						<td><form></form></td>
-						<td class="type">ERROR</td>
-						<th>form has no action</th>
-					</tr>
-					<tr class="invalid">
-						<td><form action=""></form></td>
-						<td class="type">ERROR</td>
-						<th>form action has no value</th>
-					</tr>
-					<tr class="valid">
-						<td><form action="/"></form></td>
-						<td class="type">PASSED</td>
-						<th>form action has a URI value</th>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="test_case">
-			<p>&lt;img&gt;</p>
-			<table>
-				<thead>
-					<tr>
-						<th>Test case</th>
-						<th>Type</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="invalid">
-						<td><img src="" width="16" height="16" alt="Test"></td>
-						<td class="type">ERROR</td>
-						<th>image src has no value</th>
-					</tr>
-					<tr class="invalid">
-						<td><img src="spinner.gif" width="16" height="16"></td>
-						<td class="type">ERROR</td>
-						<th>image has no alt</th>
-					</tr>
-					<tr class="warning">
-						<td><img src="spinner.gif" width="16" height="16" alt=""></td>
-						<td class="type">WARNING</td>
-						<th>image alt is empty</th>
-					</tr>
-					<tr class="warning">
-						<td><img src="spinner.gif" alt="Test"></td>
-						<td class="type">WARNING</td>
-						<th>image has no dimensions</th>
-					</tr>
-					<tr class="valid">
-						<td><img src="img/spinner.gif" width="16" height="16" alt="Test"></td>
-						<td class="type">PASSED</td>
-						<th>image as intended</th>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="test_case">
-			<p>&lt;label&gt;</p>
-			<table>
-				<thead>
-					<tr>
-						<th>Test case</th>
-						<th>Type</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="invalid">
-						<td><label>First name:</label></td>
-						<td class="type">ERROR</td>
-						<th>label has no for</th>
-					</tr>
-					<tr class="invalid">
-						<td><label for="">First name:</label></td>
-						<td class="type">ERROR</td>
-						<th>label for has no value</th>
-					</tr>
-					<tr class="valid">
-						<td><label for="txt_input">First name:</label></td>
-						<td class="type">PASSED</td>
-						<th>label for has a value</th>
-					</tr>
-				</tbody>
-			</table>
+		<div id="attributes_presentational">
+			<h1>Presentational attributes</h1>
+			<div class="test_case">
+				<p><code>align</code>, <code>valign</code>, <code>width</code>, etc</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Test example</th>
+							<th>Type</th>
+							<th>Test case</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="warning">
+							<td><p align="center">Test</p></td>
+							<td class="type">WARNING</td>
+							<th>Element has an align attribute</th>
+						</tr>
+						<tr class="warning">
+							<td><p valign="top">Test</p></td>
+							<td class="type">WARNING</td>
+							<th>Element has a valign attribute</th>
+						</tr>
+						<tr class="warning">
+							<td><p width="12">Test</p></td>
+							<td class="type">WARNING</td>
+							<th>Element has a width attribute</th>
+						</tr>
+						<tr class="warning">
+							<td><p height="12">Test</p></td>
+							<td class="type">WARNING</td>
+							<th>Element has a height attribute</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.html_helper/jquery.html_helper.js"></script>
