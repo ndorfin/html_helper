@@ -1,0 +1,2 @@
+content htmlhelper chrome/content/htmlhelper/
+overlay chrome://firebug/content/firebugOverlay.xul        chrome://htmlhelper/content/htmlhelper.xul
