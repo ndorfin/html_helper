@@ -257,11 +257,11 @@
 							<td class="type">WARNING</td>
 							<th>&lt;big&gt; elements are considered presentational</th>
 						</tr>
-						<tr class="warning">
+						<!--tr class="warning">
 							<td><blink>YAY INTERNET</blink></td>
 							<td class="type">WARNING</td>
 							<th>&lt;blink&gt; elements are considered presentational</th>
-						</tr>
+						</tr-->
 						<tr class="warning">
 							<td><center>Centered</center></td>
 							<td class="type">WARNING</td>
@@ -292,11 +292,11 @@
 							<td class="type">WARNING</td>
 							<th>&lt;u&gt; elements are considered presentational</th>
 						</tr>
-						<tr class="warning">
+						<!--tr class="warning">
 							<td><marquee>Oh lol, a marquee</marquee></td>
 							<td class="type">WARNING</td>
 							<th>&lt;marquee&gt; elements are considered presentational</th>
-						</tr>
+						</tr-->
 					</tbody>
 				</table>
 			</div>
@@ -337,6 +337,70 @@
 					</tbody>
 				</table>
 			</div>
+			<h1>Other tests</h1>
+			<div class="test_case">
+				<p>Input</p>
+				<form action="test.html" method="post">
+					<table>
+						<thead>
+							<tr>
+								<th>Test example</th>
+								<th>Type</th>
+								<th>Test case</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="invalid">
+								<td><input type="image" value="Button"></td>
+								<td class="type">ERROR</td>
+								<th>Input element type image is missing a src attribute</th>
+							</tr>
+							<tr class="invalid">
+								<td><input type="image" src="" value="Button"></td>
+								<td class="type">ERROR</td>
+								<th>Input element type image is missing a src attribute value</th>
+							</tr>
+							<tr class="invalid">
+								<td><input type="file"></td>
+								<td class="type">ERROR</td>
+								<th>Input element type file requires that the surrounding form has an enctype attribute</th>
+							</tr>
+							<tr class="warning">
+								<td><input type="image" src="img/spinner.gif" value="button"></td>
+								<td class="type">WARNING</td>
+								<th>Input element type image is dysfunctional without JS</th>
+							</tr>
+							<tr class="warning">
+								<td><input type="button" value="Button"></td>
+								<td class="type">WARNING</td>
+								<th>Input element type button is dysfunctional without JS</th>
+							</tr>
+							<tr class="warning">
+								<td><input value="button"></td>
+								<td class="type">WARNING</td>
+								<th>Input element has no type defined</th>
+							</tr>
+							<tr class="warning">
+								<td><input type value="button"></td>
+								<td class="type">WARNING</td>
+								<th>Input element has a type attribute but no attribute value</th>
+							</tr>
+							<tr class="valid">
+								<td><input type="submit" value="Submit"></td>
+								<td class="type">PASSED</td>
+								<th>Submit button is valid</th>
+							</tr>
+							<tr class="valid">
+								<td><input type="text" value="Text"></td>
+								<td class="type">PASSED</td>
+								<th>Input with type attribute defined</th>
+							</tr>
+
+						</tbody>
+					</table>
+				</form>
+			</div>
+			
 		</div>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.html_helper/jquery.html_helper.js"></script>
